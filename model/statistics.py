@@ -12,7 +12,6 @@ def get_statistics(path, desired_column):
 
     num_sentences = 0
     num_words = 0
-    num_long_words = 0
     norm_pos_freq = {}
 
     for essay in essays:
@@ -24,10 +23,6 @@ def get_statistics(path, desired_column):
 
         num_words += len(words)
 
-        for word in words:
-            if len(word) > 8:
-                num_long_words += 1
-
         for tag in tags:
             if tag[1] in norm_pos_freq:
                 norm_pos_freq[tag[1]] += 1
@@ -36,23 +31,21 @@ def get_statistics(path, desired_column):
 
     norm_num_words = (int)(num_words / len(essays))
     norm_num_sentences = (int)(num_sentences / len(essays))
-    norm_num_long_words = (int)(num_long_words / len(essays))
     norm_num_words_in_sentences = (int)(norm_num_words / norm_num_sentences)
     for tag in norm_pos_freq.keys():
             norm_pos_freq[tag] = max((int)(norm_pos_freq[tag] / len(essays)),1)
 
-    return norm_num_words, norm_num_sentences, norm_num_long_words, norm_num_words_in_sentences, norm_pos_freq
+    return norm_num_words, norm_num_sentences, norm_num_words_in_sentences, norm_pos_freq
 
 
 def statistics_check(essay):
     path = "../data/train.csv"
     desired_column = "full_text"
 
-    norm_num_words, norm_num_sentences, norm_num_long_words, norm_num_words_in_sentences, norm_pos_freq = get_statistics(path, desired_column)
+    norm_num_words, norm_num_sentences, norm_num_words_in_sentences, norm_pos_freq = get_statistics(path, desired_column)
 
     num_sentences = 0
     num_words = 0
-    num_long_words = 0
     pos_freq = {}
 
     sentences = sent_tokenize(essay)
@@ -62,10 +55,6 @@ def statistics_check(essay):
     tags = nltk.pos_tag(words)
 
     num_words += len(words)
-
-    for word in words:
-        if len(word) > 8:
-            num_long_words += 1
 
     for tag in tags:
         if tag[1] in pos_freq:
@@ -101,14 +90,19 @@ def statistics_check(essay):
 
     num_words_in_sentences_penalty = math.fabs(norm_num_words_in_sentences - num_words_in_sentences)/norm_num_words_in_sentences
     num_sentences_penalty = math.fabs(norm_num_sentences - num_sentences)/norm_num_sentences
-    num_long_words_penalty = math.fabs(norm_num_long_words - num_long_words)/norm_num_long_words
     num_words_penalty = math.fabs(norm_num_words - num_words)/norm_num_words
     pos_penalty = pos_penalty/(tag_count+len(major_tags))
 
-    penalty_ratio = (0.5*num_words_penalty + 0.5*num_sentences_penalty + num_long_words_penalty + num_words_in_sentences_penalty + 2*pos_penalty)/5
+    penalty_ratio = (0.5*num_words_penalty + 0.5*num_sentences_penalty + num_words_in_sentences_penalty + pos_penalty)/2.5
 
     penalty_score = (penalty_ratio*10.0)
 
     statistics_score = max(10.0 - penalty_score, 0)
+
+    # print all ratios
+    # print(f"num_words_penalty: {num_words_penalty:.1f}")
+    # print(f"num_sentences_penalty: {num_sentences_penalty:.1f}")
+    # print(f"num_words_in_sentences_penalty: {num_words_in_sentences_penalty:.1f}")
+    # print(f"pos_penalty: {pos_penalty:.1f}")
 
     return statistics_score
