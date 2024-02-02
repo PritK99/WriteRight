@@ -93,7 +93,7 @@ def statistics_check(essay):
     num_words_penalty = math.fabs(norm_num_words - num_words)/norm_num_words
     pos_penalty = pos_penalty/(tag_count+len(major_tags))
 
-    penalty_ratio = (0.5*num_words_penalty + 0.5*num_sentences_penalty + num_words_in_sentences_penalty + pos_penalty)/2.5
+    penalty_ratio = (num_words_penalty + num_sentences_penalty + 2*num_words_in_sentences_penalty + pos_penalty)/5
 
     penalty_score = (penalty_ratio*10.0)
 
