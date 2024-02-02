@@ -22,7 +22,7 @@ while True:
 print('/' * window_width)
 
 statistic_score = statistics_check(essay)
-syntax_score = syntax_check(prompt, essay)
+syntax_score = syntax_check(essay)
 semantic_score = semantic_check(prompt, essay)
 
 total_score = (statistic_score + 2*syntax_score + 2*semantic_score)/5
