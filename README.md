@@ -6,7 +6,7 @@
 
 ## Table of Contents
 
-- [Transformers-from-Scratch](#Transformers-from-Scratch)
+- [WriteRight](#WriteRight)
   - [Table of Contents](#table-of-contents)
   - [About The Project](#about)
   - [Demo](#demo)
