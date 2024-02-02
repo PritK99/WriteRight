@@ -10,22 +10,25 @@
   - [Table of Contents](#table-of-contents)
   - [About The Project](#about)
   - [Demo](#demo)
+  - [Flowchart](#flowchart)
   - [Documentation](#documentation)
   - [File Structure](#file-structure)
-  - [Contributors](#contributors)
   - [References](#references)
   - [License](#license)
   
 
 ## About
 
-PyTorch-based custom Transformer model from scratch for English-to-Spanish translation, inspired by the "Attention is All You Need" paper. 
-
-<p align="center">
-    <img src="./assets/Transformer-architecture.png" alt="Transformer Architecture">
-</p>
+Automated Essay Scoring (AES) is is the use of Machine Learning and Natural Language Processing to automatically grade an essay. The main objective of the project is to assign a score between 1 - 10 to an essay depending on several features. The system looks at three main things: how well the words and sentences are used (Statistical), if the grammar is correct (Syntax), and if the essay makes sense and has depth (Semantics). This helps schools and exams like GRE save time and ensure fair and consistent grading, making essay evaluations quicker and more reliable. As technology improves, AES keeps getting better at understanding and grading essays.
 
 ## Demo
+
+## Flowchart
+
+<p align="center">
+    <img src="assets/flowchart.png" alt="Flowchart">
+</p>
+
 
 ## Documentation
 
@@ -33,23 +36,19 @@ Please refer ```/documentation``` or click <a href="https://github.com/PritK99/T
 
 ## File Structure
 ```
-👨‍💻Transformers-from-Scratch
+👨‍💻WriteRight
  ┣ 📂assets                            // Contains all the reference gifs, images
- ┣ 📂documentation                     // Contains documentation and my notes on transformers
+ ┣ 📂data  
+ ┃ ┣ 📄train.csv  
+ ┣ 📂Documentation
  ┃ ┣ 📄README.md
- ┣ 📄model.py                          // Transformer Architecture
- ┣ 📄train.py                          // Training loop
- ┣ 📄dataset.py                        // Loading & Preprocessing Dataset  
- ┣ 📄config.py 
- ┣ 📂visualization                     // Contains other visualizations
- ┃ ┣ 📄embedding.py
- ┃ ┣ 📄README.md
+ ┣ 📂data                 
+ ┃ ┣ 📄main.py    
+ ┃ ┣ 📄statistics.py
+ ┃ ┣ 📄syntax.py                
+ ┃ ┣ 📄semantics.py 
  ┣ 📄README.md
 ``` 
-
-## Contributors
-
-* <a href="https://github.com/PritK99">Prit Kanadiya</a>
 
 ## References
 * https://www.kaggle.com/competitions/feedback-prize-english-language-learning/data?select=train.csv
