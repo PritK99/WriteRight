@@ -13,6 +13,7 @@
   - [Flowchart](#flowchart)
   - [Documentation](#documentation)
   - [File Structure](#file-structure)
+  - [Getting started](#Getting-Started)
   - [Future Goals](#future-goals)
   - [References](#references)
   - [License](#license)
@@ -33,7 +34,7 @@ The computerized grading of essays by machine learning and natural language proc
 
 ## Documentation
 
-Please refer ```/documentation``` or click <a href="https://github.com/PritK99/WriteRight/blob/main/documentation/README.md">here</a> for complete documentation of the project
+Please refer ```/documentation``` or click <a href="https://github.com/PritK99/WriteRight/blob/main/documentation/README.md">here</a> for complete documentation of the project.
 
 ## File Structure
 ```
@@ -50,6 +51,45 @@ Please refer ```/documentation``` or click <a href="https://github.com/PritK99/W
  ┃ ┣ 📄semantics.py 
  ┣ 📄README.md
 ``` 
+
+## Getting Started
+
+### Prerequisites
+To download and use this code, the minimum requirements are:
+
+* Windows 7 or later (64-bit), Ubuntu 20.04 or later
+* [Microsoft VS Code](https://code.visualstudio.com/download) or any other IDE 
+* Please install all the neccesary python libraries using pip if required.
+
+### Installation
+
+Clone the project by typing the following command in your Terminal/CommandPrompt
+
+```
+git clone https://github.com/PritK99/WriteRight
+```
+Navigate to the WriteRight folder
+
+```WriteRight
+```
+
+### Usage
+
+Once the requirements are satisfied, you can easily use the project. There are two ways to use the project, one is through the Web Application and other is through command line.
+
+#### Method I: Using Web Application
+
+#### Method II: Using Command Line
+
+Navigate to standalone model folder
+```
+cd model
+```
+
+Run the driver file using python / python3 or the IDE of your choice.
+```
+python main.py
+```
 
 ## References
 * Unsupervised learning during the statistical phase was conducted using a dataset from Kaggle's Feedback Prize – English Language Learning competition. The dataset can be accessed <a href="https://www.kaggle.com/competitions/feedback-prize-english-language-learning/data?select=train.csv.">here</a>.

@@ -1,1 +1,0 @@
-# WriteRight Model
