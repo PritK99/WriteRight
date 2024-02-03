@@ -3,10 +3,21 @@ import nltk
 import math
 from nltk import word_tokenize, sent_tokenize
 
+# Download nltk data and model for POS Tagging
 nltk.download('punkt')
 nltk.download('averaged_perceptron_tagger')
 
 def get_statistics(path, desired_column):
+    """
+    Extracts statistical features from a dataset column.
+
+    Args:
+    - path (str): Path to the CSV file.
+    - desired_column (str): Name of the column containing essays.
+
+    Returns:
+    - Tuple: Tuple containing normalized values for word count, sentence count, words per sentence, and POS tags frequency.
+    """
     df = pd.read_csv(path)
     essays = df[desired_column]
 
@@ -38,7 +49,17 @@ def get_statistics(path, desired_column):
     return norm_num_words, norm_num_sentences, norm_num_words_in_sentences, norm_pos_freq
 
 
-def statistics_check(essay):
+def statistics_check(essay, suggestions):
+    """
+    Evaluates an essay based on statistical features and provides suggestions.
+
+    Args:
+    - essay (str): The essay text to be evaluated.
+    - suggestions (list): A list to store suggestions based on the evaluation.
+
+    Returns:
+    - float: The final statistics score.
+    """
     path = "../data/train.csv"
     desired_column = "full_text"
 
@@ -92,6 +113,19 @@ def statistics_check(essay):
     num_sentences_penalty = math.fabs(norm_num_sentences - num_sentences)/norm_num_sentences
     num_words_penalty = math.fabs(norm_num_words - num_words)/norm_num_words
     pos_penalty = pos_penalty/(tag_count+len(major_tags))
+
+    if (num_words_in_sentences_penalty > 0.5):
+        suggestion = "The number of words in sentences is too high or too low. The number of words in sentences should be around " + str(norm_num_words_in_sentences) + "."
+        suggestions.append(suggestion)
+    if (num_sentences_penalty > 0.5):
+        suggestion = "The number of sentences is too high or too low. The number of sentences should be around " + str(norm_num_sentences) + "."
+        suggestions.append(suggestion)
+    if (num_words_penalty > 0.5):
+        suggestion = "The number of words is too high or too low. The number of words should be around " + str(norm_num_words) + "."
+        suggestions.append(suggestion)
+    if (pos_penalty > 0.5):
+        suggestion = "The part of speech distribution is too high or too low. Try to use a different distribution of parts of speech."
+        suggestions.append(suggestion)
 
     penalty_ratio = (num_words_penalty + num_sentences_penalty + 2*num_words_in_sentences_penalty + pos_penalty)/5
 
