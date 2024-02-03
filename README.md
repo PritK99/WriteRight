@@ -59,7 +59,7 @@ To download and use this code, the minimum requirements are:
 
 * Windows 7 or later (64-bit), Ubuntu 20.04 or later
 * [Microsoft VS Code](https://code.visualstudio.com/download) or any other IDE 
-* Please install all the neccesary python libraries using pip if required.
+* Please install all the neccesary Python libraries using pip if required.
 
 ### Installation
 
@@ -70,7 +70,8 @@ git clone https://github.com/PritK99/WriteRight
 ```
 Navigate to the WriteRight folder
 
-```WriteRight
+```
+cd WriteRight
 ```
 
 ### Usage
