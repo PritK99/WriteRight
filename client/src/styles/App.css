@@ -1,0 +1,65 @@
+body, html {
+  height: 100%;
+  margin: 0;
+}
+
+.container {
+  display: flex;
+  height: 100%;
+  justify-content: space-between;
+  margin: 20px;
+}
+
+.left-section {
+  flex: 1;
+  margin-right: 10px;
+}
+
+.right-section {
+  width: 50%;
+  height: 100%; /* Make right section full height as well */
+}
+
+textarea {
+  width: 100%;
+  height: 100%; /* Expand to fill its container */
+  margin-bottom: 10px;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: #4caf50;
+  color: white;
+  cursor: pointer;
+}
+
+.score-bars {
+  margin-bottom: 20px;
+}
+
+.score-bar {
+  background-color: #4caf50;
+  color: white;
+  padding: 8px;
+  margin-bottom: 5px;
+}
+
+.suggestions {
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+h3 {
+  margin-bottom: 10px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  margin-bottom: 5px;
+}
