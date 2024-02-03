@@ -55,7 +55,7 @@ Please refer ```/documentation``` or click <a href="https://github.com/PritK99/W
 * Unsupervised learning during the statistical phase was conducted using a dataset from Kaggle's Feedback Prize – English Language Learning competition. The dataset can be accessed <a href="https://www.kaggle.com/competitions/feedback-prize-english-language-learning/data?select=train.csv.">here</a>.
 * Hewlett Foundation's <a href="https://www.kaggle.com/competitions/asap-aes/overview">Automated Essay Scoring Competition</a>, held in 2012.
 <a href="The Hewlett Foundation: Automated Essay Scoring">Automated Essay Scoring</a> competion by Hewlett Foundation.
-* Reference was made to the following <a href="https://github.com/ZhuoyueWang/AutomatedEssayScoring">GitHub repository</a> for Automated Essay Scoring
+* Reference was made to the following <a href="https://github.com/ZhuoyueWang/AutomatedEssayScoring">GitHub repository</a> for Automated Essay Scoring.
 
 ## Future Goals
 
