@@ -82,15 +82,20 @@ Once the requirements are satisfied, you can easily use the project. There are t
 
 #### Method II: Using Command Line
 
-Navigate to standalone model folder
-```
-cd model
-```
+  Navigate to standalone model folder
+  ```
+  cd model
+  ```
 
-Run the driver file using python / python3 or the IDE of your choice.
-```
-python main.py
-```
+  Run the driver file using python / python3 or the IDE of your choice.
+  ```
+  python main.py
+  ```
+
+  Please note:
+
+  1) The model takes around ```1.5 minutes``` to evaluate the essay.
+  2) Please press enter twice to mark the end of the essay.
 
 ## References
 * Unsupervised learning during the statistical phase was conducted using a dataset from Kaggle's Feedback Prize – English Language Learning competition. The dataset can be accessed <a href="https://www.kaggle.com/competitions/feedback-prize-english-language-learning/data?select=train.csv.">here</a>.

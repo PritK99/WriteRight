@@ -1,6 +1,7 @@
 import pandas as pd
 import nltk
 import math
+import os
 from nltk import word_tokenize, sent_tokenize
 
 # Download nltk data and model for POS Tagging
@@ -18,8 +19,15 @@ def get_statistics(path, desired_column):
     Returns:
     - Tuple: Tuple containing normalized values for word count, sentence count, words per sentence, and POS tags frequency.
     """
-    df = pd.read_csv(path)
-    essays = df[desired_column]
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    path = os.path.join(script_dir, '..', 'data', path)
+
+    try:
+        df = pd.read_csv(path)
+        essays = df[desired_column]
+    except FileNotFoundError:
+        print(f"Error: File not found at {path}")
+        return
 
     num_sentences = 0
     num_words = 0
@@ -60,10 +68,10 @@ def statistics_check(essay, suggestions):
     Returns:
     - float: The final statistics score.
     """
-    path = "../data/train.csv"
+    train_dataset_name = "train.csv"
     desired_column = "full_text"
 
-    norm_num_words, norm_num_sentences, norm_num_words_in_sentences, norm_pos_freq = get_statistics(path, desired_column)
+    norm_num_words, norm_num_sentences, norm_num_words_in_sentences, norm_pos_freq = get_statistics(train_dataset_name, desired_column)
 
     num_sentences = 0
     num_words = 0
