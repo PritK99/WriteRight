@@ -1,5 +1,12 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
+import os
+import sys
+
+current_dir = os.path.dirname(os.path.abspath(__file__))
+parent_dir = os.path.dirname(current_dir)
+sys.path.append(parent_dir)
+
 from model.semantic import semantic_check
 from model.statistics import statistics_check
 from model.syntax import syntax_check
@@ -13,13 +20,15 @@ def analyze():
         data = request.get_json()
         prompt = data.get('prompt', '')
         essay = data.get('essay', '')
+        suggestions = []
 
         if not essay:
             raise ValueError("Essay is required.")
 
-        statistic_score = statistics_check(essay)
-        syntax_score = syntax_check(essay)
-        semantic_score = semantic_check(prompt, essay)
+        print("Analysis starting...")
+        statistic_score = statistics_check(essay, suggestions)
+        syntax_score = syntax_check(essay, suggestions)
+        semantic_score = semantic_check(prompt, essay, suggestions)
 
         total_score = (statistic_score + 2 * syntax_score + 2 * semantic_score) / 5
 
@@ -28,9 +37,9 @@ def analyze():
             'statistic_score': statistic_score,
             'syntax_score': syntax_score,
             'semantic_score': semantic_score,
-            'suggestions': []  # Include suggestions if applicable
+            'suggestions': suggestions  # Include suggestions if applicable
         }
-
+        print("Analysis complete...")
         return jsonify(analysis_results)
 
     except Exception as e:
