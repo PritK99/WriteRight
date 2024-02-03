@@ -92,9 +92,9 @@ Once the requirements are satisfied, you can easily use the project. There are t
   python main.py
   ```
 
-  Please note:
+  <b>Note</b>:
 
-  1) The model takes around ```1.5 minutes``` to evaluate the essay.
+  1) The model takes around ```1.5 minutes``` to evaluate the essay. Thus, please wait for the model to evaluate results and print for 1.5 min after clicking run on web application or pressing enter twice on command line
   2) Please press enter twice to mark the end of the essay.
 
 ## References

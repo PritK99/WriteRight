@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './styles/App.css';
 
 const EssayAnalyzer = () => {
@@ -13,6 +13,12 @@ const EssayAnalyzer = () => {
     syntaxScore: 0,
     suggestions: [],
   });
+
+  // State variables to manage score bar widths
+  const [totalScoreWidth, setTotalScoreWidth] = useState('0%');
+  const [statisticScoreWidth, setStatisticScoreWidth] = useState('0%');
+  const [semanticScoreWidth, setSemanticScoreWidth] = useState('0%');
+  const [syntaxScoreWidth, setSyntaxScoreWidth] = useState('0%');
 
   const handlePromptChange = (e) => {
     setPrompt(e.target.value);
@@ -43,12 +49,31 @@ const EssayAnalyzer = () => {
       }
 
       const analysisResults = await response.json();
+      console.log(analysisResults);
+      console.log("Yayyyy")
       setAnalysisResults(analysisResults);
     } catch (error) {
       console.error(error);
       // Handle error, show a message, etc.
     }
   };
+
+  useEffect(() => {
+    // Update the score bars when analysisResults change
+    const updateScoreBars = () => {
+      const totalScoreWidth = `${analysisResults.totalScore}%`;
+      const statisticScoreWidth = `${analysisResults.statisticScore}%`;
+      const semanticScoreWidth = `${analysisResults.semanticScore}%`;
+      const syntaxScoreWidth = `${analysisResults.syntaxScore}%`;
+
+      setTotalScoreWidth(totalScoreWidth);
+      setStatisticScoreWidth(statisticScoreWidth);
+      setSemanticScoreWidth(semanticScoreWidth);
+      setSyntaxScoreWidth(syntaxScoreWidth);
+    };
+
+    updateScoreBars();
+  }, [analysisResults]);
 
   return (
     <div className="container">
@@ -70,16 +95,16 @@ const EssayAnalyzer = () => {
 
       <div className="right-section">
         <div className="score-bars">
-          <div className="score-bar" style={{ width: `${analysisResults.totalScore}%` }}>
+          <div className="score-bar" style={{ width: totalScoreWidth }}>
             Total Score
           </div>
-          <div className="score-bar" style={{ width: `${analysisResults.statisticScore}%` }}>
+          <div className="score-bar" style={{ width: statisticScoreWidth }}>
             Statistic Score
           </div>
-          <div className="score-bar" style={{ width: `${analysisResults.semanticScore}%` }}>
+          <div className="score-bar" style={{ width: semanticScoreWidth }}>
             Semantic Score
           </div>
-          <div className="score-bar" style={{ width: `${analysisResults.syntaxScore}%` }}>
+          <div className="score-bar" style={{ width: syntaxScoreWidth }}>
             Syntax Score
           </div>
         </div>

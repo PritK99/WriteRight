@@ -38,7 +38,7 @@ def semantic_check(prompt, essay, suggestions):
 
     if (similarity_score < 0.5):
         suggestions.append("Try to rephrase the essay to make it more relevant to the given topic.")
-    
+
     # All scores greater than 0.7 are considered to be perfect match with the prompt
     if (similarity_score >= 0.7):
         return 10.0
