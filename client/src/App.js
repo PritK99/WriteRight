@@ -24,34 +24,42 @@ const EssayAnalyzer = () => {
     checkRunButtonVisibility(prompt, e.target.value);
   };
 
-  // Run Button is only made visible when user inputs both prompt and essay
   const checkRunButtonVisibility = (promptValue, essayValue) => {
     setShowRunButton(promptValue.trim() !== '' && essayValue.trim() !== '');
   };
 
-  const handleRunButtonClick = () => {
-    // Temporary for testing purposes
-    const mockAnalysisResults = {
-      totalScore: 80,
-      statisticScore: 90,
-      semanticScore: 85,
-      syntaxScore: 75,
-      suggestions: ['Improve vocabulary', 'Check grammar'],
-    };
+  const handleRunButtonClick = async () => {
+    try {
+      const response = await fetch('http://localhost:5000/api/analyze', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ prompt, essay }),
+      });
 
-    setAnalysisResults(mockAnalysisResults);
+      if (!response.ok) {
+        throw new Error('Failed to analyze the essay');
+      }
+
+      const analysisResults = await response.json();
+      setAnalysisResults(analysisResults);
+    } catch (error) {
+      console.error(error);
+      // Handle error, show a message, etc.
+    }
   };
 
   return (
     <div className="container">
       <div className="left-section">
         <textarea
-          placeholder={`Enter the topic sentence.\n\nExample: Many of the world's lesser-known languages are being lost as fewer and fewer people speak them. The governments of countries in which these languages are spoken should act to prevent such languages from becoming extinct. Present your perspective on the given issue.`}
+          placeholder={`Enter the topic sentence...\n\nExample: Many of the world's lesser-known languages are being lost...`}
           value={prompt}
           onChange={handlePromptChange}
         />
         <textarea
-          placeholder={`Enter the essay.\n\nExample: The speaker asserts that governments of countries where lesser-known languages are spoken should intervene to prevent these languages from becoming extinct. I agree in so far as a country's indigenous and distinct languages should not be abandoned and forgotten altogether. At some point, however, I think cultural identity should yield to the more practical considerations of day-to-day life in a global society...`}
+          placeholder={`Enter the essay...\n\nExample: The speaker asserts that governments of countries...`}
           value={essay}
           onChange={handleEssayChange}
         />
@@ -61,7 +69,6 @@ const EssayAnalyzer = () => {
       </div>
 
       <div className="right-section">
-        {/* Score Bars */}
         <div className="score-bars">
           <div className="score-bar" style={{ width: `${analysisResults.totalScore}%` }}>
             Total Score
@@ -77,7 +84,6 @@ const EssayAnalyzer = () => {
           </div>
         </div>
 
-        {/* Suggestions */}
         <div className="suggestions">
           <h3>Suggestions:</h3>
           <ul>
