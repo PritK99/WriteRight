@@ -135,7 +135,13 @@ def statistics_check(essay, suggestions):
         suggestion = "The part of speech distribution is too high or too low. Try to use a different distribution of parts of speech."
         suggestions.append(suggestion)
 
-    penalty_ratio = (num_words_penalty + num_sentences_penalty + 2*num_words_in_sentences_penalty + pos_penalty)/5
+    penalty_ratio = (num_words_penalty + num_sentences_penalty + num_words_in_sentences_penalty + pos_penalty)/4
+
+    # Heavily penalizing short essays
+    if (num_words < 50):
+        penalty_ratio = 1
+    elif (num_words < 150):
+        penalty_ratio *= 1.5
 
     penalty_score = (penalty_ratio*10.0)
 
