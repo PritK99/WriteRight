@@ -72,9 +72,7 @@ penalty_ratio = (num_words_penalty + num_sentences_penalty + 2*num_words_in_sent
 penalty_score = (penalty_ratio*10.0)
 ```
 
-In our penalty system, each feature is assigned a weight reflecting its importance. Notably, we double the penalty for deviations from the average number of words in a sentence, emphasizing the significance of maintaining consistency in sentence length. This approach aims to address the possibility that users might use fewer or more words in an essay, but they generally tend to use the same number of words in a sentence.Thus, we try to  penalize deviations per sentence more heavily than variations in the overall essay length.
-
-Similarly, for POS-Tags, our system imposes higher penalties for deviations from the average frequency of major POS-Tags, prioritizing consistency in commonly used tags like 'NN' or 'VB' over rare ones such as 'PDT' or 'SYM.' This strategy aligns with the expectation that users are more likely to employ common POS-Tags in their essays.
+In our penalty system, each feature is assigned a weight reflecting its importance. For POS-Tags, our system imposes higher penalties for deviations from the average frequency of major POS-Tags, prioritizing consistency in commonly used tags like 'NN' or 'VB' over rare ones such as 'PDT' or 'SYM.' This strategy aligns with the expectation that users are more likely to employ common POS-Tags in their essays.
 
 ## Module II: Syntax Analysis
 
