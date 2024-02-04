@@ -33,12 +33,13 @@ def analyze():
         total_score = (statistic_score + 2 * syntax_score + 2 * semantic_score) / 5
 
         analysis_results = {
-            'total_score': total_score,
-            'statistic_score': statistic_score,
-            'syntax_score': syntax_score,
-            'semantic_score': semantic_score,
-            'suggestions': suggestions  # Include suggestions if applicable
+            'total_score': round(total_score, 1),
+            'statistic_score': round(statistic_score, 1),
+            'syntax_score': round(syntax_score, 1),
+            'semantic_score': round(semantic_score, 1),
+            'suggestions': suggestions  # Assuming suggestions is not a numerical score
         }
+
         print("Analysis complete...")
         return jsonify(analysis_results)
 
