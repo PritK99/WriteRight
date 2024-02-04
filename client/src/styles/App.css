@@ -38,9 +38,30 @@ button {
   margin-bottom: 20px;
 }
 
-.score-bar {
-  background-color: #4caf50;
-  color: white;
+.syntax-bar{
+  background-color: blueviolet ;
+  color: black;
+  padding: 8px;
+  margin-bottom: 5px;
+}
+
+.semantic-bar{
+  background-color: yellow;
+  color: black;
+  padding: 8px;
+  margin-bottom: 5px;
+}
+
+.statistic-bar{
+  background-color: green;
+  color: black;
+  padding: 8px;
+  margin-bottom: 5px;
+}
+
+.total-bar{
+  background-color:red;
+  color: black;
   padding: 8px;
   margin-bottom: 5px;
 }

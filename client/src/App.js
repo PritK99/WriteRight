@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './styles/App.css';
+import TextInput from './components/TextInput';
+import RunButton from './components/RunButton';
+import ScoreReport from './components/ScoreReport';
 
 const EssayAnalyzer = () => {
   const [prompt, setPrompt] = useState('');
@@ -13,12 +16,6 @@ const EssayAnalyzer = () => {
     syntaxScore: 0,
     suggestions: [],
   });
-
-  // State variables to manage score bar widths
-  const [totalScoreWidth, setTotalScoreWidth] = useState('0%');
-  const [statisticScoreWidth, setStatisticScoreWidth] = useState('0%');
-  const [semanticScoreWidth, setSemanticScoreWidth] = useState('0%');
-  const [syntaxScoreWidth, setSyntaxScoreWidth] = useState('0%');
 
   const handlePromptChange = (e) => {
     setPrompt(e.target.value);
@@ -48,66 +45,39 @@ const EssayAnalyzer = () => {
         throw new Error('Failed to analyze the essay');
       }
 
-      const analysisResults = await response.json();
-      console.log(analysisResults);
-      console.log("Yayyyy")
-      setAnalysisResults(analysisResults);
+      try {
+        const analysisResults = await response.json();
+        console.log(analysisResults);
+        setAnalysisResults(analysisResults);
+      } catch (error) {
+        console.error('Failed to parse response JSON', error);
+        // Handle error, show a message, etc.
+      }
     } catch (error) {
       console.error(error);
       // Handle error, show a message, etc.
     }
   };
 
-  useEffect(() => {
-    // Update the score bars when analysisResults change
-    const updateScoreBars = () => {
-      const totalScoreWidth = `${analysisResults.totalScore}%`;
-      const statisticScoreWidth = `${analysisResults.statisticScore}%`;
-      const semanticScoreWidth = `${analysisResults.semanticScore}%`;
-      const syntaxScoreWidth = `${analysisResults.syntaxScore}%`;
-
-      setTotalScoreWidth(totalScoreWidth);
-      setStatisticScoreWidth(statisticScoreWidth);
-      setSemanticScoreWidth(semanticScoreWidth);
-      setSyntaxScoreWidth(syntaxScoreWidth);
-    };
-
-    updateScoreBars();
-  }, [analysisResults]);
-
   return (
     <div className="container">
       <div className="left-section">
-        <textarea
+        <TextInput
           placeholder={`Enter the topic sentence...\n\nExample: Many of the world's lesser-known languages are being lost...`}
           value={prompt}
           onChange={handlePromptChange}
         />
-        <textarea
+        <TextInput
           placeholder={`Enter the essay...\n\nExample: The speaker asserts that governments of countries...`}
           value={essay}
           onChange={handleEssayChange}
+          isLarge={true}
         />
-        <button onClick={handleRunButtonClick} disabled={!showRunButton}>
-          Run
-        </button>
+        <RunButton onClick={handleRunButtonClick} disabled={!showRunButton} />
       </div>
 
       <div className="right-section">
-        <div className="score-bars">
-          <div className="score-bar" style={{ width: totalScoreWidth }}>
-            Total Score
-          </div>
-          <div className="score-bar" style={{ width: statisticScoreWidth }}>
-            Statistic Score
-          </div>
-          <div className="score-bar" style={{ width: semanticScoreWidth }}>
-            Semantic Score
-          </div>
-          <div className="score-bar" style={{ width: syntaxScoreWidth }}>
-            Syntax Score
-          </div>
-        </div>
+        <ScoreReport analysisResults={analysisResults} />
 
         <div className="suggestions">
           <h3>Suggestions:</h3>
