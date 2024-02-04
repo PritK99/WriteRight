@@ -131,7 +131,7 @@ def statistics_check(essay, suggestions):
     if (num_words_penalty > 0.5):
         suggestion = "The number of words is too high or too low. The number of words should be around " + str(norm_num_words) + "."
         suggestions.append(suggestion)
-    if (pos_penalty > 0.5):
+    if (pos_penalty > 0.7):
         suggestion = "The part of speech distribution is too high or too low. Try to use a different distribution of parts of speech."
         suggestions.append(suggestion)
 
