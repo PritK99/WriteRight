@@ -5,10 +5,10 @@ import RunButton from './components/RunButton';
 import ScoreReport from './components/ScoreReport';
 
 const EssayAnalyzer = () => {
+  // State for prompt, essay, showRunButton, and analysisResults
   const [prompt, setPrompt] = useState('');
   const [essay, setEssay] = useState('');
   const [showRunButton, setShowRunButton] = useState(false);
-
   const [analysisResults, setAnalysisResults] = useState({
     totalScore: 0,
     statisticScore: 0,
@@ -17,20 +17,24 @@ const EssayAnalyzer = () => {
     suggestions: [],
   });
 
+  // Event handlers for prompt and essay changes
   const handlePromptChange = (e) => {
     setPrompt(e.target.value);
     checkRunButtonVisibility(e.target.value, essay);
   };
 
   const handleEssayChange = (e) => {
+    // eslint-disable-next-line
     setEssay(e.target.value);
     checkRunButtonVisibility(prompt, e.target.value);
   };
 
+  // Check the visibility of the RunButton based on prompt and essay values
   const checkRunButtonVisibility = (promptValue, essayValue) => {
     setShowRunButton(promptValue.trim() !== '' && essayValue.trim() !== '');
   };
 
+  // Handle RunButton click
   const handleRunButtonClick = async () => {
     try {
       const response = await fetch('http://localhost:5000/api/analyze', {
@@ -59,9 +63,11 @@ const EssayAnalyzer = () => {
     }
   };
 
+  // Render the component
   return (
     <div className="container">
       <div className="left-section">
+        {/* TextInput components for prompt and essay */}
         <TextInput
           placeholder={`Enter the topic sentence...\n\nExample: Many of the world's lesser-known languages are being lost...`}
           value={prompt}
@@ -73,12 +79,15 @@ const EssayAnalyzer = () => {
           onChange={handleEssayChange}
           isLarge={true}
         />
+        {/* RunButton component */}
         <RunButton onClick={handleRunButtonClick} disabled={!showRunButton} />
       </div>
 
       <div className="right-section">
+        {/* ScoreReport component */}
         <ScoreReport analysisResults={analysisResults} />
 
+        {/* Suggestions section */}
         <div className="suggestions">
           <h3>Suggestions:</h3>
           <ul>
