@@ -42,6 +42,7 @@ Please refer ```/documentation``` or click <a href="https://github.com/PritK99/W
  ┣ 📂assets                            // Contains all the reference gifs, images
  ┣ 📂data                              // Datasets for training and Testing
  ┃ ┣ 📄train.csv  
+ ┃ ┣ 📄test.csv 
  ┣ 📂Documentation                     // Complete Documentation and Project Workflow
  ┃ ┣ 📄README.md
  ┣ 📂model                             // Standalone model         
@@ -49,6 +50,21 @@ Please refer ```/documentation``` or click <a href="https://github.com/PritK99/W
  ┃ ┣ 📄statistics.py
  ┃ ┣ 📄syntax.py                
  ┃ ┣ 📄semantics.py 
+ ┣ 📂test                              // Testing       
+ ┃ ┣ 📄test.py   
+ ┣ 📂client                            // Frontend        
+ ┃ ┃ ┣ 📂src                                      
+ ┃ ┃ ┃ ┣ 📂components  
+ ┃ ┃ ┃ ┃ ┣ 📄RunButton.js  
+ ┃ ┃ ┃ ┃ ┣ 📄ScoreReport.js 
+ ┃ ┃ ┃ ┃ ┣ 📄TextInput.js
+ ┃ ┃ ┃ ┣ 📂styles
+ ┃ ┃ ┃ ┃ ┣ 📄App.css
+ ┃ ┃ ┃ ┣ 📄index.js
+ ┃ ┃ ┣ 📂public 
+ ┃ ┃ ┃ ┣ 📄index.html
+ ┣ 📂server                            // Backend 
+ ┃ ┣ 📄app.py   
  ┣ 📄README.md
 ``` 
 
