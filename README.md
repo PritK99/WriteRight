@@ -78,8 +78,29 @@ cd WriteRight
 
 Once the requirements are satisfied, you can easily use the project. There are two ways to use the project, one is through the Web Application and other is through command line.
 
+<b>Note:</b> The model requires approximately ```1.5 minutes``` to complete the evaluation of the essay. Thus, please wait for the model to evaluate results and print for some time after clicking run on web application or pressing enter twice on command line.
+
 #### Method I: Using Web Application
 
+  * To start the client, run these commands
+  ```
+  cd client
+  ```
+  ```
+  npm i
+  ```
+  ```
+  npm start
+  ```
+
+  * To start the server, run these commands on new terminal
+
+  ```
+  cd server
+  ```
+  ```
+  python app.py
+  ```
 #### Method II: Using Command Line
 
   Navigate to standalone model folder
@@ -87,15 +108,10 @@ Once the requirements are satisfied, you can easily use the project. There are t
   cd model
   ```
 
-  Run the driver file using python / python3 or the IDE of your choice.
+  Run the driver file using python or the IDE of your choice.
   ```
   python main.py
   ```
-
-  <b>Note</b>:
-
-  1) The model takes around ```1.5 minutes``` to evaluate the essay. Thus, please wait for the model to evaluate results and print for 1.5 min after clicking run on web application or pressing enter twice on command line
-  2) Please press enter twice to mark the end of the essay.
 
 ## References
 * Unsupervised learning during the statistical phase was conducted using a dataset from Kaggle's Feedback Prize – English Language Learning competition. The dataset can be accessed <a href="https://www.kaggle.com/competitions/feedback-prize-english-language-learning/data?select=train.csv.">here</a>.
@@ -105,7 +121,7 @@ Once the requirements are satisfied, you can easily use the project. There are t
 
 ## Future Goals
 
-- [ ] Considering more features such as number of Short Words, number of Long Words, Sentence Formation, Capitalization etc.
+- [ ] Considering more features such as number of Short Words, number of Long Words, Sentence Formation, Capitalization, Proper use of articles etc.
 - [ ] Improving the Web Application by adding better UI and Features.
 - [ ] Using Deep Learning Techniques such as LSTMs and CNNs to improve the performance of the algorithm.
 

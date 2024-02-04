@@ -69,7 +69,7 @@ const EssayAnalyzer = () => {
       <div className="left-section">
         {/* TextInput components for prompt and essay */}
         <TextInput
-          placeholder={`Enter the topic sentence...\n\nExample: Many of the world's lesser-known languages are being lost...`}
+          placeholder={`Enter the topic sentence...\n\nExample: Present your views on the below topic. Many of the world's lesser-known languages are being lost as fewer and fewer people speak them. The governments of countries in which these languages are spoken should act to prevent such languages from becoming extinct.`} 
           value={prompt}
           onChange={handlePromptChange}
         />

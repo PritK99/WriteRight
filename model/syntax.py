@@ -24,9 +24,7 @@ def spelling_error(essay):
     
     # Iterate over misspelled words and collect suggestions
     for err in spell_checker:
-        print("Hiiiiii")
         suggestion = spell_checker.suggest(err.word)[0]
-        print(suggestion)
         suggestions.append(f"Did you mean {suggestion} instead of {err.word}?")
 
     return total_misspelled_words/len(words), suggestions
