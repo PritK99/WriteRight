@@ -25,6 +25,8 @@ The computerized grading of essays by machine learning and natural language proc
 
 ## Demo
 
+https://github.com/PritK99/WriteRight/assets/103832825/687803ad-4037-4fb7-a8ac-254ea0ef1861
+
 ## Flowchart
 
 <p align="center">
