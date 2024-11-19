@@ -25,7 +25,7 @@ The computerized grading of essays by machine learning and natural language proc
 
 ## Demo
 
-https://github.com/PritK99/WriteRight/assets/103832825/687803ad-4037-4fb7-a8ac-254ea0ef1861
+https://github.com/user-attachments/assets/6a885180-e463-4b6c-9168-7c62dbb9dc13
 
 ## Flowchart
 
@@ -36,7 +36,7 @@ https://github.com/PritK99/WriteRight/assets/103832825/687803ad-4037-4fb7-a8ac-2
 
 ## Documentation
 
-Please refer ```/documentation``` or click <a href="https://github.com/PritK99/WriteRight/blob/main/documentation/README.md">here</a> for complete documentation of the project.
+Please refer ```/documentation``` or click  [here](documentation/README.md) for complete documentation of the project.
 
 ## File Structure
 ```
